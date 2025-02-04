@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Focus Tab</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <img src="./icons//icon48.png" class="icon" alt="Logo raytra Innov" />
+      <h1 class="title">Focus Tab</h1>
+      <div class="card">
+        <button id="toggleFocus" class="btn btn-primary">Activer Focus</button>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Liste blanche</h2>
+        <div class="whitelist-input">
+          <input type="text" id="whitelistUrl" placeholder="Ex: github.com" />
+          <button id="addWhitelist" class="btn btn-green">Ajouter</button>
+        </div>
+        <ul id="whitelist" class="whitelist"></ul>
+      </div>
+      <div class="card">
+        <h2 class="section-title">Mode Hardcore</h2>
+        <div class="hardcore-controls">
+          <select id="hardcoreDuration">
+            <option value="300000">5 min</option>
+            <option value="600000">10 min</option>
+            <option value="1500000">25 min</option>
+          </select>
+          <button id="toggleHardcore" class="btn btn-red">
+            Activer Hardcore
+          </button>
+        </div>
+        <p id="hardcoreTimer" class="timer"></p>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

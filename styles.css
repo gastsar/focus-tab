@@ -1,0 +1,125 @@
+/* styles.css */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  color: #333;
+}
+
+
+.container {
+  max-width: 400px;
+  margin: auto;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  img {
+
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    height: auto;
+
+  }
+}
+
+.title {
+  color: #2c3e50;
+  text-align: center;
+}
+
+
+.card {
+  text-align: center;
+  background: #ffffff;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+  padding: 0;
+  color: #34495e;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.btn {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+}
+
+.btn-green {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.btn-green:hover {
+  background-color: #27ae60;
+}
+
+.btn-red {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-red:hover {
+  background-color: #c0392b;
+}
+
+.whitelist-input {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.whitelist-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.whitelist {
+  list-style: none;
+  padding: 0;
+}
+
+.whitelist li {
+  padding: 8px;
+  background-color: #ecf0f1;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timer,
+.stats {
+  text-align: center;
+  font-size: 18px;
+  color: #7f8c8d;
+}
+
+#hardcoreDuration {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
