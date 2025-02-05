@@ -74,35 +74,43 @@ function updateWhitelistUI() {
   });
 }
 
-// Fonction pour activer le mode Hardcore
+let hardcoreInterval = null; // Stocker l'intervalle globalement
+
+// Fonction pour activer le mode Hardcore en cumulant les durées
 document.getElementById("toggleHardcore").addEventListener("click", () => {
-  chrome.storage.local.get(["focusMode"], ({ focusMode }) => {
-    if (!focusMode) {
-      alert(
-        "Le mode Focus doit être activé avant de pouvoir activer le mode Hardcore."
-      );
-      return;
-    }
-
-    // Récupérer la durée sélectionnée pour le mode Hardcore
-    let duration = parseInt(
-      document.getElementById("hardcoreDuration").value,
-      10
-    );
-    if (isNaN(duration) || duration <= 0) {
-      alert("Veuillez entrer une durée valide.");
-      return;
-    }
-
-    let endTime = Date.now() + duration * 1000;
-
-    chrome.storage.local.set(
-      { hardcoreMode: true, hardcoreEndTime: endTime },
-      () => {
-        updateHardcoreUI();
+  chrome.storage.local.get(
+    ["focusMode", "hardcoreEndTime"],
+    ({ focusMode, hardcoreEndTime }) => {
+      if (!focusMode) {
+        alert(
+          "Le mode Focus doit être activé avant de pouvoir activer le mode Hardcore."
+        );
+        return;
       }
-    );
-  });
+
+      let duration = parseInt(
+        document.getElementById("hardcoreDuration").value,
+        10
+      );
+      if (isNaN(duration) || duration <= 0) {
+        alert("Veuillez entrer une durée valide.");
+        return;
+      }
+
+      let currentTime = Date.now();
+      let newEndTime =
+        hardcoreEndTime && hardcoreEndTime > currentTime
+          ? hardcoreEndTime + duration * 1000 // Ajouter au temps restant
+          : currentTime + duration * 1000; // Nouvelle activation
+
+      chrome.storage.local.set(
+        { hardcoreMode: true, hardcoreEndTime: newEndTime },
+        () => {
+          updateHardcoreUI();
+        }
+      );
+    }
+  );
 });
 
 // Mise à jour de l'UI du mode Hardcore
@@ -112,8 +120,13 @@ function updateHardcoreUI() {
     ({ hardcoreMode, hardcoreEndTime }) => {
       let timerElement = document.getElementById("hardcoreTimer");
 
+      // Supprimer tout ancien intervalle actif
+      if (hardcoreInterval) {
+        clearInterval(hardcoreInterval);
+      }
+
       if (hardcoreMode) {
-        let interval = setInterval(() => {
+        hardcoreInterval = setInterval(() => {
           let remaining = Math.max(
             0,
             Math.floor((hardcoreEndTime - Date.now()) / 1000)
@@ -121,10 +134,13 @@ function updateHardcoreUI() {
           timerElement.textContent = `Temps restant : ${remaining} sec`;
 
           if (remaining <= 0) {
-            chrome.storage.local.set({ hardcoreMode: false }, () => {
-              clearInterval(interval);
-              updateHardcoreUI();
-            });
+            clearInterval(hardcoreInterval); // Arrêter l'intervalle une fois le temps écoulé
+            chrome.storage.local.set(
+              { hardcoreMode: false, hardcoreEndTime: null },
+              () => {
+                updateHardcoreUI();
+              }
+            );
           }
         }, 1000);
       } else {

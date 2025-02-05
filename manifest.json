@@ -2,12 +2,11 @@
   "name": "Focus Tab – Reste concentré et productif",
   "version": "1.0",
   "manifest_version": 3,
-  "description": "Focus Tab vous aide à rester concentré en floutant les sites distrayants pendant que vous travaillez. Ajoutez des sites à la liste blanche, activez le mode Hardcore pour ne pas être tenté de quitter votre tâche, et suivez vos progrès avec un tableau de bord de productivité. L’extension est idéale pour ceux qui cherchent à maximiser leur efficacité tout en restant sur leurs objectifs.",
+  "description": "Focus Tab vous aide à rester concentré en floutant les sites distrayants pendant que vous travaillez.",
   "icons": {
     "16": "icons/icon.png",
     "48": "icons/icon.png",
-    "128": "icons/icon.png",
-    "focus": "icons/icon.png"
+    "128": "icons/icon.png"
   },
   "permissions": [
     "tabs",
