@@ -18,8 +18,9 @@
 - **Mode Hardcore**  
   Une fois activé, ce mode empêche la désactivation du Focus pendant une durée choisie (5, 10 ou 25 minutes).  
 
-  > [!WARNING]  
-  > Ce mode est conçu pour être strict : une fois activé, impossible de revenir en arrière avant la fin du compte à rebours !
+> [!WARNING]  
+> Ce mode est conçu pour être strict : une fois activé, impossible de revenir en arrière avant la fin du compte à rebours !
+
 
 - **Statistiques de productivité**  
   Suivez le temps total passé en mode Focus pour analyser votre productivité.
